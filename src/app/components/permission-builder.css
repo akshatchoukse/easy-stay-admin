@@ -1,0 +1,56 @@
+/* Custom checkbox styling for Permission Builder */
+.permission-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #E5E7EB;
+  background-color: white;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+/* Hover state - light background behind checkbox */
+.permission-checkbox:hover {
+  box-shadow: 0 0 0 4px #F7F9FC;
+}
+
+/* Checked state - brand primary border and checkmark */
+.permission-checkbox:checked {
+  background-color: white;
+  border-color: #F24E1E;
+  border-width: 1px;
+}
+
+/* Brand primary checkmark icon */
+.permission-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 4.5px;
+  top: 1.5px;
+  width: 4px;
+  height: 8px;
+  border: solid #F24E1E;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Focus state */
+.permission-checkbox:focus {
+  outline: 2px solid #F24E1E;
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.permission-checkbox:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: #E5E7EB;
+}
+
+.permission-checkbox:disabled:hover {
+  box-shadow: none;
+}
