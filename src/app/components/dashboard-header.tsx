@@ -45,7 +45,9 @@ export function DashboardHeader({
             style={{ color: "#6B7280" }}
           />
         </button>
-        
+        <h2 className="text-lg font-semibold text-gray-900 ml-2 lg:ml-0">
+          {pageTitle}
+        </h2>
       </div>
 
       {/* Right Section */}

@@ -2,19 +2,14 @@ import { useState } from 'react';
 import { DashboardSidebar } from './dashboard-sidebar';
 import { DashboardHeader } from './dashboard-header';
 import { DashboardContent } from './dashboard-content';
-import { RoleManagement } from './role-management';
-import { PermissionBuilder } from './permission-builder';
-import { UserManagement } from './user-management';
-import { RiderManagement } from './rider-management';
-import { KYCVerification } from './kyc-verification';
-import { ComplianceFlags } from './compliance-flags';
-import { HubManagement } from './hub-management';
-import { VehicleRegistry } from './vehicle-registry';
-import { BookingManagement } from './booking-management';
-import { MaintenanceGovernance } from './maintenance-governance';
-import { NotificationCampaignManagement } from './notification-campaign-management';
-import { AuditLog } from './audit-log';
-import { ModelMaster } from './model-master';
+import { HotelManagement } from './hotel-management';
+import { RoomManagement } from './room-management';
+import { StaffManagementHotel } from './staff-management-hotel';
+import { InventoryManagementHotel } from './inventory-management-hotel';
+import { ExpenseManagementHotel } from './expense-management-hotel';
+import { HotelBookingManagement } from './hotel-booking-management';
+import { AmenityManagement } from './amenity-management';
+
 
 interface DashboardLayoutProps {
   onLogout: () => void;
@@ -26,71 +21,29 @@ export function DashboardLayout({ onLogout }: DashboardLayoutProps) {
 
   const getPageTitle = () => {
     switch (activePage) {
-      case 'dashboard':
-        return 'Dashboard';
-      case 'roles':
-        return 'Role Management';
-      case 'users':
-        return 'User Management';
-      case 'riders':
-        return 'Riders';
-      case 'kyc-verification':
-        return 'KYC & Verification';
-      case 'compliance-flags':
-        return 'Compliance Flags';
-      case 'permissions':
-        return 'Permissions';
-      case 'bookings':
-        return 'Bookings';
-      case 'vehicles':
-        return 'Vehicles';
-      case 'maintenance':
-        return 'Maintenance';
-      case 'notifications':
-        return 'Notifications';
-      case 'hubs':
-        return 'Hubs';
-      case 'audit':
-        return 'Audit Log';
-      case 'reports':
-        return 'Reports';
-      case 'model-master':
-        return 'Model Master';
-      case 'settings':
-        return 'Settings';
-      default:
-        return 'Dashboard';
+      case 'dashboard':    return 'Dashboard';
+      case 'hotel-hotels': return 'Hotels';
+      case 'hotel-rooms':  return 'Room Management';
+      case 'hotel-bookings': return 'Hotel Bookings';
+      case 'hotel-staff':  return 'Staff Management';
+      case 'hotel-inventory': return 'Inventory';
+      case 'hotel-expenses':  return 'Expenses';
+      case 'hotel-amenities': return 'Hotel Amenities';
+
+      default: return 'Dashboard';
     }
   };
 
   const renderPageContent = () => {
     switch (activePage) {
-      case 'users':
-        return <UserManagement />;
-      case 'riders':
-        return <RiderManagement />;
-      case 'kyc-verification':
-        return <KYCVerification />;
-      case 'compliance-flags':
-        return <ComplianceFlags />;
-      case 'roles':
-        return <RoleManagement />;
-      case 'permissions':
-        return <PermissionBuilder />;
-      case 'hubs':
-        return <HubManagement />;
-      case 'vehicles':
-        return <VehicleRegistry />;
-      case 'bookings':
-        return <BookingManagement />;
-      case 'maintenance':
-        return <MaintenanceGovernance />;
-      case 'notifications':
-        return <NotificationCampaignManagement />;
-      case 'audit':
-        return <AuditLog />;
-      case 'model-master':
-        return <ModelMaster />;
+      case 'hotel-hotels':    return <HotelManagement />;
+      case 'hotel-rooms':     return <RoomManagement />;
+      case 'hotel-bookings':  return <HotelBookingManagement />;
+      case 'hotel-staff':     return <StaffManagementHotel />;
+      case 'hotel-inventory': return <InventoryManagementHotel />;
+      case 'hotel-expenses':  return <ExpenseManagementHotel />;
+      case 'hotel-amenities': return <AmenityManagement />;
+
       case 'dashboard':
       default:
         return <DashboardContent />;

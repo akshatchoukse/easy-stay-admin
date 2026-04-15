@@ -1,25 +1,19 @@
 import { useState } from 'react';
 import {
   LayoutDashboard,
-  Users,
-  MapPin,
-  Calendar,
-  Settings,
-  Shield,
-  UserCog,
-  FileText,
   ChevronDown,
   ChevronRight,
   LogOut,
   X,
-  Wrench,
-  ScrollText,
-  UserCircle,
-  ClipboardCheck,
-  Flag,
-  Database,
+  Hotel,
+  BedDouble,
+  UserCheck,
+  Package,
+  IndianRupee,
+  CalendarCheck,
+  Sparkles,
 } from 'lucide-react';
-import { ScooterIcon } from './ui/scooter-icon';
+
 
 interface SidebarProps {
   isOpen: boolean;
@@ -37,80 +31,16 @@ interface NavItem {
 }
 
 const navigationItems: NavItem[] = [
-  {
-    id: 'dashboard',
-    label: 'Dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    id: 'bookings',
-    label: 'Bookings',
-    icon: Calendar,
-  },
-  {
-    id: 'vehicles',
-    label: 'Vehicles',
-    icon: ScooterIcon,
-  },
-  {
-    id: 'maintenance',
-    label: 'Maintenance',
-    icon: Wrench,
-  },
-  {
-    id: 'hubs',
-    label: 'Hubs',
-    icon: MapPin,
-  },
-  {
-    id: 'system-users',
-    label: 'System Users',
-    icon: Users,
-    children: [
-      { id: 'users', label: 'Users', icon: Users },
-      { id: 'roles', label: 'Roles', icon: Shield },
-      { id: 'permissions', label: 'Permissions', icon: UserCog },
-    ],
-  },
-  {
-    id: 'rider-management',
-    label: 'Riders',
-    icon: UserCircle,
-    children: [
-      { id: 'riders', label: 'Riders', icon: UserCircle },
-      { id: 'kyc-verification', label: 'KYC & Verification', icon: ClipboardCheck },
-      { id: 'compliance-flags', label: 'Compliance Flags', icon: Flag },
-    ],
-  },
-  {
-    id: 'notifications',
-    label: 'Notifications',
-    icon: FileText,
-  },
-  {
-    id: 'audit',
-    label: 'Audit Log',
-    icon: ScrollText,
-  },
-  {
-    id: 'reports',
-    label: 'Reports',
-    icon: FileText,
-  },
-  {
-    id: 'masters',
-    label: 'Masters',
-    icon: Database,
-    children: [
-      { id: 'model-master', label: 'Model Master', icon: Database },
-    ],
-  },
-  {
-    id: 'settings',
-    label: 'Settings',
-    icon: Settings,
-  },
+  { id: 'dashboard',       label: 'Dashboard',     icon: LayoutDashboard },
+  { id: 'hotel-hotels',    label: 'Hotels',         icon: Hotel },
+  { id: 'hotel-rooms',     label: 'Rooms',          icon: BedDouble },
+  { id: 'hotel-bookings',  label: 'Bookings',       icon: CalendarCheck },
+  { id: 'hotel-staff',     label: 'Staff',          icon: UserCheck },
+  { id: 'hotel-inventory', label: 'Inventory',      icon: Package },
+  { id: 'hotel-expenses',  label: 'Expenses',       icon: IndianRupee },
+  { id: 'hotel-amenities', label: 'Amenities',      icon: Sparkles },
 ];
+
 
 export function DashboardSidebar({ isOpen, onClose, onLogout, activePage, onNavigate }: SidebarProps) {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
@@ -150,7 +80,7 @@ export function DashboardSidebar({ isOpen, onClose, onLogout, activePage, onNavi
         <div className="h-16 flex items-center justify-between px-4" style={{ borderBottom: '1px solid #E5E7EB' }}>
           <div>
             <h1 className="font-semibold" style={{ fontSize: '16px', color: '#111111' }}>Bhago Mobility</h1>
-            <p style={{ fontSize: '12px', color: '#6B7280' }}>Admin Panel</p>
+            <p style={{ fontSize: '12px', color: '#6B7280' }}>Super Admin Portal</p>
           </div>
           <button
             onClick={onClose}
@@ -224,11 +154,10 @@ function NavItemComponent({
   onItemClick,
   depth = 0,
 }: NavItemComponentProps) {
-  const hasChildren = item.children && item.children.length > 0;
+  const hasChildren = !!(item.children && item.children.length > 0);
   const isExpanded = expandedItems.includes(item.id);
   const isActive = activeItem === item.id;
   const Icon = item.icon;
-  const isScooterIcon = Icon === ScooterIcon;
 
   return (
     <li>
@@ -255,11 +184,7 @@ function NavItemComponent({
           }
         }}
       >
-        {isScooterIcon ? (
-          <Icon className="w-5 h-5 flex-shrink-0" isActive={isActive} />
-        ) : (
-          <Icon className="w-5 h-5 flex-shrink-0" />
-        )}
+        <Icon className="w-5 h-5 flex-shrink-0" />
         <span className="flex-1 text-left">{item.label}</span>
         {hasChildren && (
           <span className="flex-shrink-0">
