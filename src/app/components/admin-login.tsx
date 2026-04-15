@@ -180,7 +180,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
             </button>
           </form>
 
-          {/* Demo credentials */}
+          {/* Demo credentials
           <div
             style={{
               marginTop: '24px',
@@ -194,7 +194,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
             <p style={{ fontWeight: '600', color: '#374151', marginBottom: '6px' }}>Demo Credentials</p>
             <p>Admin: <span style={{ color: '#111111' }}>admin@hotels.com / admin123</span></p>
             <p style={{ marginTop: '3px' }}>Manager: <span style={{ color: '#111111' }}>manager@hotels.com / manager123</span></p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
